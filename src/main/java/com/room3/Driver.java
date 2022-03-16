@@ -11,6 +11,7 @@ import com.room3.dao.DaoImpl;
 import com.room3.models.Crime;
 import com.room3.models.SuperPrison;
 import com.room3.models.SuperVillain;
+import com.room3.util.Configuration;
 
 
 public class Driver {
@@ -25,7 +26,9 @@ public class Driver {
 		
 		System.out.println("Running project demo Demo");
 		
-
+		Configuration setStuff = new Configuration("C:\\Users\\mkolb\\Desktop\\New folder\\Project1SV\\src\\main\\resources\\application.properties");
+		
+		
 		Crime c1 = new Crime(1,"Freezy", "covering the city in ice");
 //		Crime c2 = new Crime("Time Manipulation", "freezin' time, robbin'banks");
 //		Crime c3 = new Crime("Arson", "setting the city ablaze");
