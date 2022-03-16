@@ -3,7 +3,7 @@ package com.room3.models;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.JoinColumn;
+
 
 import com.room3.annotations.Column;
 import com.room3.annotations.Entity;
@@ -23,11 +23,8 @@ public class SuperVillain {
 	private String Superpower;
 	
 	@Column(columnName = "bounty")
-	private double bounty;
+	private int bounty;
 	
-	List<Crime> crimes;
-	@JoinCol(columnName = "prison_fk", foreignKey = 1)
-	private SuperPrison superPrisonHolder;
 	
 	
 	public SuperVillain() {
