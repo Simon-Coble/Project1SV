@@ -8,7 +8,7 @@ import com.room3.annotations.Id;
 
 
 
-@Entity(tableName = "crimes")
+@Entity(tableName = "crime")
 public class Crime {
 
 	@Id(columnName = "crime_id")
@@ -16,6 +16,7 @@ public class Crime {
 	
 	@Column(columnName = "crime_name")
 	private String crimeName;
+	@Column(columnName = "description")
 	private String description;
 	
 	public Crime() {
