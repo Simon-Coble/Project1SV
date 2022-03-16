@@ -3,10 +3,11 @@ package com.room3.models;
 import java.util.List;
 import java.util.Objects;
 
+
 import com.room3.annotations.Column;
 import com.room3.annotations.Entity;
 import com.room3.annotations.Id;
-import com.room3.annotations.JoinCol;
+
 
 @Entity(tableName = "super_villain")
 public class SuperVillain {

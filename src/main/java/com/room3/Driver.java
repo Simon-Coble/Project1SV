@@ -5,24 +5,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.room3.dao.DaoImpl;
 
 
 import com.room3.models.Crime;
 import com.room3.models.SuperPrison;
 import com.room3.models.SuperVillain;
+import com.room3.util.Configuration;
 
 
 public class Driver {
 
+
 	static DaoImpl cdao = new DaoImpl();
 //	static SuperPrisonDao spdao = new SuperPrisonDao();
 //	static SuperVillainDao svdao = new SuperVillainDao();
+
 	
 	public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException, SecurityException, SQLException  {
 		
 		System.out.println("Running project demo Demo");
+		
+		Configuration setStuff = new Configuration("C:\\Users\\mkolb\\Desktop\\New folder\\Project1SV\\src\\main\\resources\\application.properties");
+		
 		
 		Crime c1 = new Crime(1,"Freezy", "covering the city in ice");
 //		Crime c2 = new Crime("Time Manipulation", "freezin' time, robbin'banks");
@@ -43,6 +48,7 @@ public class Driver {
 		List<Object> crimes = cdao.selectAllByValueInColumn("evilness", "superpower", SuperVillain.class);
 		System.out.println(crimes.toString());
 		//cdao.deleteById(c1, 2);
+
 		
 		System.out.println(cdao.updateSingle(joker).toString());
 	}
