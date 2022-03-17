@@ -21,52 +21,61 @@ public class Driver {
 	public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException,
 			InvocationTargetException, InstantiationException, NoSuchFieldException, SecurityException, SQLException {
 		
+		
+		System.out.println("Connecting to DB");
 		Configuration setStuff = new Configuration("C:\\Users\\mkolb\\Desktop\\New folder\\Project1SV\\src\\main\\resources\\application.properties");
 		scan.nextLine();
 		
-		System.out.println("Running project demo Demo");
+		System.out.println("Creating Tables");
 		//Creates all Tables from a package
 		cdao.findAllClasses("com.room3.models");
 		
 		scan.nextLine();		
-
+		System.out.println("Inserting into tables");
 		Crime c1 = new Crime("Freezy", "covering the city in ice");
-		Crime c2 = new Crime("Time Manipulation", "freezin' time, robbin'banks");
+		Crime c2 = new Crime("Time Manipulation", "freezin' time");
 		Crime c3 = new Crime("Arson", "setting the city ablaze");
 		Crime c4 = new Crime("Arson", "Fire and Fury");
 		SuperPrison arkham = new SuperPrison("Arkham Asylum", "Gotham City");
 		SuperVillain joker = new SuperVillain("The Joker", "evilness", 600000);
 		
-		cdao.insert(c4);
+		
 		cdao.insert(c1);
 		cdao.insert(c2);
 		cdao.insert(c3);
+		cdao.insert(c4);
 		cdao.insert(joker);
 		cdao.insert(arkham);
 		
 		scan.nextLine();
-		
+		System.out.println("Selecting by id");
 		Crime updateCrime = (Crime) cdao.selectById(c3, 3);
 		System.out.println(updateCrime);
 		
 		scan.nextLine();
 		
-		
+		System.out.println("selecting all arson");
 		List<Object> crimes = cdao.selectAllByValueInColumn("Arson", "crime_name", Crime.class);
 		System.out.println(crimes.toString());
 		
 		scan.nextLine();
-	    cdao.deleteById(c1, 2);
-		
+		System.out.println("updating crime");
 		updateCrime.setCrimeName("robbery");
 		updateCrime.setDescription("take stuff");
+		
+		
 		System.out.println(cdao.updateSingle(updateCrime).toString());
 		
 		scan.nextLine();
+		System.out.println("printing out crimes");
 		
-		System.out.println(cdao.findAll(c1));
-		
-		cdao.deleteById(c1, 1);
+		for (Object o: cdao.findAll(c1)) {
+			System.out.println(o.toString());
+		}
+			
+		scan.nextLine();
+		System.out.println("deleting crime 1");
+		cdao.deleteById(c2, 2);
 	}
 
 }
